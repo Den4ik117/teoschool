@@ -1,0 +1,1 @@
+Vue.createApp({data:function(){return{isActiveMenu:!1}}}).mount("#header");

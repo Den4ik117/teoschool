@@ -1,0 +1,179 @@
+//! ИНИЦИАЛИЗАЦИЯ ПЕРЕМЕННЫХ
+$headerColor: #324148;
+$borderColor: rgba(255, 255, 255, 0.1);
+$asideColor: #263238;
+$whiteColor: rgba(255, 255, 255, 0.9);
+$notifyColor: #17A2B8;
+$borderColorBlack: rgba(0, 0, 0, 0.15);
+$redColor: #DC3545;
+$greenColor: #28A745;
+$orangeColor: #FFA726;
+
+
+//! ПОДКЛЮЧЕНИЕ ШРИФТОВ
+@font-face {
+  font-family: 'OpenSans Regular';
+  font-style: normal;
+  font-weight: 400;
+  src: url(/fonts/OpenSans-Regular.ttf) format('truetype');
+}
+
+$familyOS: 'OpenSans Regular', sans-serif;
+
+
+//! ДЕФОЛТНЫЕ СТИЛИ
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: $familyOS;
+  background-image: url(/images/bg.jpg);
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.bg {
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+button.btn {
+  font-family: $familyOS;
+  padding: 10px;
+  color: $whiteColor;
+  cursor: pointer;
+  border: none;
+  border-radius: 5px;
+  background-image: linear-gradient(to right, rgb(101, 115, 255), rgb(111, 114, 247), rgb(120, 114, 239), rgb(130, 113, 231), rgb(139, 112, 223), rgb(149, 111, 215), rgb(158, 111, 208), rgb(168, 110, 200), rgb(177, 109, 192), rgb(187, 108, 184), rgb(196, 108, 176), rgb(206, 107, 168));
+  font-weight: bold;
+}
+
+button.btn:hover {
+  box-shadow: rgba(0, 0, 0, 0.5) 0px 0px 12px 0px;
+}
+
+button.btn:focus {
+  outline: none;
+}
+
+input:focus,
+button:focus,
+select:focus {
+  outline: none;
+}
+
+.form {
+  width: 100%;
+
+  .btn {
+    margin-top: 10px;
+  }
+
+  .input-icon {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border: 1px solid $borderColorBlack;
+    margin-bottom: 10px;
+
+    p {
+      font-size: 14px;
+      font-weight: bold;
+      height: 40px;
+      // width: 40px;
+      text-align: right;
+      // padding-right: 10px;
+      padding: 0 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: #E9ECEF;
+      border-right: 1px solid $borderColorBlack;
+      // text-align: center;
+      
+      // i {
+        // width: 20px;
+        // display: block;
+        // margin: 0 auto;
+      // }
+    }
+    input,
+    select {
+      border: none;
+      height: 40px;
+      // width: calc(100% - 40px);
+      width: 100%;
+      padding: 0 10px;
+      font-size: 15px;
+      background-color: #fff;
+    }
+    input:focus,
+    select:focus {
+      box-shadow: rgba(0, 0, 0, 0.5) 0px 0px 12px 0px;
+    }
+
+  }
+  .policy {
+    color: #333;
+  }
+
+  label {
+    display: block;
+    margin-bottom: 4px;
+
+    input[type="checkbox"],
+    input[type="radio"] {
+      margin-right: 4px;
+    }
+  }
+}
+
+.messages {
+  margin: 20px 0;
+  font-weight: bold;
+
+  .messages__error {
+    color: $redColor;
+  }
+
+  .messages__success {
+    color: $greenColor;
+  }
+}
+
+.link {
+  color: #333;
+  font-weight: bold;
+  margin-left: 8px;
+  transition: .1s;
+}
+
+.link:hover {
+  color: #CC6BA9;
+}
+
+#main {
+  width: 600px;
+  min-height: 200px;
+  background-color: #fafafa;
+  border: 1px solid $borderColorBlack;
+  border-radius: 10px;
+  padding: 20px;
+  color: #333;
+
+  .main__header {
+    text-align: center;
+    margin: 20px 0;
+    margin-top: 0;
+    font-weight: bold;
+    font-size: 20px;
+  }
+}
