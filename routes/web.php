@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\Dashboard\CheatsheetController;
+use App\Http\Controllers\Dashboard\CourseController;
 use App\Http\Controllers\Dashboard\DashboardController;
 use App\Http\Controllers\Dashboard\UserController;
 use Illuminate\Support\Facades\Route;
@@ -18,18 +20,14 @@ Route::get('subscribe', function() {})->name('subscribe');
 Route::get('privacy', function() {})->name('privacy');
 Route::get('contacts', function() {})->name('contacts');
 
-Route::get('/', function () {
-    return view('index');
-});
+Route::view('/', 'index');
 
 Route::get('/dashboard', DashboardController::class)->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware(['auth', 'verified'])->prefix('dashboard')->name('dashboard.')->group(function () {
-    Route::resource('users', UserController::class)->except('show');
+    Route::resource('/users', UserController::class)->except('show');
+    Route::resource('/courses', CourseController::class)->except('show');
+    Route::resource('/cheatsheets', CheatsheetController::class)->except('show');
 });
-//Route::get('/dashboard', function () {
-//    dd(\App\Enums\Role::values());
-//    return view('admin.index');
-//})->middleware(['auth', 'verified'])->name('dashboard');
 
 require __DIR__.'/auth.php';
