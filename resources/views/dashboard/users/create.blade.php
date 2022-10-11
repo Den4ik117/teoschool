@@ -4,7 +4,7 @@
     <div class="flex items-center justify-between py-2">
         <div class="font-bold">
             <span>Добавление пользователя</span>
-            <a class="text-indigo-400 font-bold hover:underline" href="{{ route('admin.users.index') }}">[назад]</a>
+            <a class="text-indigo-400 font-bold hover:underline" href="{{ route('dashboard.users.index') }}">[назад]</a>
         </div>
     </div>
 @endsection
@@ -19,7 +19,7 @@
                 </div>
             </div>
             <div class="mt-5 md:mt-0 md:col-span-2">
-                <form action="{{ route('admin.users.store') }}" method="POST">
+                <form action="{{ route('dashboard.users.store') }}" method="POST">
                     @csrf
                     <div class="shadow overflow-hidden sm:rounded-md">
                         <div class="px-4 py-5 bg-white sm:p-6">
@@ -46,10 +46,10 @@
                                 </div>
 
                                 <div class="col-span-6 space-y-2">
-                                    @foreach($roles as $index => $role)
+                                    @foreach($roles as $role)
                                         <div class="flex items-center">
-                                            <input id="role-{{ $index }}" name="role" type="radio" class="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300" value="{{ $role }}" @checked(old('role') === $role)>
-                                            <label for="role-{{ $index }}" class="ml-2 block text-sm font-medium text-gray-700 capitalize">{{ $role }}</label>
+                                            <input id="role-{{ $role }}" name="role" type="radio" class="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300" value="{{ $role }}" @checked(old('role', \App\Enums\Role::Student->value) == $role->value)>
+                                            <label for="role-{{ $role }}" class="ml-2 block text-sm font-medium text-gray-700">{{ $role->description() }}</label>
                                         </div>
                                     @endforeach
                                 </div>

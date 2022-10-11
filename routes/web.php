@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\Dashboard\DashboardController;
+use App\Http\Controllers\Dashboard\UserController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -20,8 +22,14 @@ Route::get('/', function () {
     return view('index');
 });
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+Route::get('/dashboard', DashboardController::class)->middleware(['auth', 'verified'])->name('dashboard');
+
+Route::middleware(['auth', 'verified'])->prefix('dashboard')->name('dashboard.')->group(function () {
+    Route::resource('users', UserController::class)->except('show');
+});
+//Route::get('/dashboard', function () {
+//    dd(\App\Enums\Role::values());
+//    return view('admin.index');
+//})->middleware(['auth', 'verified'])->name('dashboard');
 
 require __DIR__.'/auth.php';

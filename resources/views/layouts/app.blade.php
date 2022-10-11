@@ -8,7 +8,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     <link rel="shortcut icon" href="{{ asset('favicon.ico') }}" type="image/x-icon">
-    <title>Design Project</title>
+    <title>@yield('title', 'Панель администратора') • TeoSchool</title>
     @vite('resources/css/app.css')
 </head>
 <body class="bg-gray-100 overflow-x-hidden">
@@ -20,12 +20,12 @@
                 <div class="flex items-center gap-2">
                     <div class="flex items-center justify-center w-10 h-10 rounded-full bg-gradient-to-r from-indigo-300 to-purple-400">
                         <span class="text-white font-bold select-none">
-                            @auth DV @endauth
+                            @auth {{ auth()->user()->initials }} @endauth
                             @guest A @endguest
                         </span>
                     </div>
                     <span class="hidden sm:block font-semibold">
-                        @auth Dmitry Vinogradov @endauth
+                        @auth {{ auth()->user()->full_name }} @endauth
                     </span>
                 </div>
                 <label for="menu-toggle" class="burger-menu">
@@ -36,9 +36,8 @@
             <nav class="menu py-2">
                 <ul class="flex flex-col gap-1">
                     @auth
-                        <li><a class="block px-3 py-2 rounded-md font-medium hover:bg-gray-100" href="#">Main</a></li>
-                        <li><a class="block px-3 py-2 rounded-md font-medium hover:bg-gray-100" href="#">About</a></li>
-                        <li><a class="block px-3 py-2 rounded-md font-medium hover:bg-gray-100" href="#">Some more</a></li>
+                        <li><a @class(['block px-3 py-2 rounded-md font-medium hover:bg-gray-100', 'underline' => Route::is('dashboard')]) href="{{ route('dashboard') }}">Приборная панель</a></li>
+                        <li><a class="block px-3 py-2 rounded-md font-medium hover:bg-gray-100" href="{{ route('logout') }}">Выйти</a></li>
                     @endauth
 
                     @guest

@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace App\Http\Controllers\Dashboard;
 
+use App\Enums\Role;
 use App\Http\Controllers\Controller;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -19,14 +20,14 @@ class UserController extends Controller
     {
         $users = User::all();
 
-        return view('admin.users.index', compact('users'));
+        return view('dashboard.users.index', compact('users'));
     }
 
     public function create()
     {
-        $roles = User::ROLES;
+        $roles = Role::cases();
 
-        return view('admin.users.create', compact('roles'));
+        return view('dashboard.users.create', compact('roles'));
     }
 
     public function store(Request $request)
@@ -36,7 +37,7 @@ class UserController extends Controller
             'last_name' => 'required|string|max:255',
             'email' => 'required|string|email|max:255|unique:users',
             'password' => 'required|string|min:8|max:255',
-            'role' => 'required|string|in:' . implode(',', User::ROLES)
+            'role' => 'required|string|in:' . implode(',', Role::values())
         ]);
 
         User::create([
@@ -47,14 +48,14 @@ class UserController extends Controller
             'password' => Hash::make($request->password),
         ]);
 
-        return to_route('admin.users.create')->with('success', 'Пользователь успешно добавлен!');
+        return to_route('dashboard.users.create')->with('success', 'Пользователь успешно добавлен!');
     }
 
     public function edit(User $user)
     {
-        $roles = User::ROLES;
+        $roles = Role::cases();
 
-        return view('admin.users.edit', compact(['user', 'roles']));
+        return view('dashboard.users.edit', compact(['user', 'roles']));
     }
 
     public function update(Request $request, User $user)
@@ -62,7 +63,7 @@ class UserController extends Controller
         $validated = $request->validate([
             'first_name' => 'required|string|max:255',
             'last_name' => 'required|string|max:255',
-            'role' => 'required|string|in:' . implode(',', User::ROLES)
+            'role' => 'required|string|in:' . implode(',', Role::values())
         ]);
 
         if ($user->id === auth()->user()->id && $user->role !== $request->role)
@@ -70,7 +71,7 @@ class UserController extends Controller
 
         $user->update($validated);
 
-        return to_route('admin.users.index')->with('success', 'Пользователь успешно изменён!');
+        return to_route('dashboard.users.index')->with('success', 'Пользователь успешно изменён!');
     }
 
     public function destroy(User $user)
@@ -80,6 +81,6 @@ class UserController extends Controller
 
         $user->delete();
 
-        return to_route('admin.users.index')->with('success', 'Пользователь успешно удалён!');
+        return to_route('dashboard.users.index')->with('success', 'Пользователь успешно удалён!');
     }
 }
