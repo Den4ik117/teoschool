@@ -224,7 +224,7 @@ section {
   .header__link:not(:first-child) {
     margin-left: 32px;
   }
-  
+
   .header__link-active a {
     color: $color-blue;
   }
@@ -392,7 +392,7 @@ section {
 //! ПРИЗЫВ К ОБУЧЕНИЮ
 
 .cta {
-  background-image: url(/images/cta.webp);
+  background-image: url(../images/cta.webp);
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -435,7 +435,7 @@ section {
   .courses__list li:not(.courses__subject-active) span {
     display: none;
   }
-  
+
   .courses__list li span {
     margin-right: 4px;
   }
@@ -461,7 +461,7 @@ section {
     border: 1px solid $color-black;
     border-radius: 10px;
   }
-  
+
   .courses__title {
     font-size: 24px;
     letter-spacing: 0.2px;
@@ -623,7 +623,7 @@ section {
     align-items: center;
     justify-content: center;
   }
-  
+
   .subscribe__input {
     border: 1px solid $color-blue;
     padding: 11px 36px 11px 18px;
@@ -694,7 +694,7 @@ section {
     line-height: 18px;
     letter-spacing: 0.2px;
   }
-  
+
   .footer__copyright a {
     text-decoration: underline;
   }
@@ -781,7 +781,9 @@ section {
     }
   }
 }
-
+.overmenu {
+    display: none;
+}
 @media screen and (max-width: 720px) and (min-width: 541px) {
   .container {
     max-width: 90%;
@@ -849,7 +851,7 @@ section {
     .footer__link:not(:first-child) {
       margin-left: 16px;
     }
-    
+
     .footer__logo {
       display: none;
     }
@@ -857,7 +859,7 @@ section {
     .footer__row {
       justify-content: center;
     }
-    
+
     .footer__copyright a,
     .footer__copyright {
       font-size: 10px;
@@ -871,7 +873,7 @@ section {
   }
 
   .overmenu {
-    display: none;
+    display: block;
     position: fixed;
     width: 100%;
     height: 100%;
@@ -999,7 +1001,7 @@ section {
       margin: 0 !important;
       margin-bottom: 16px;
     }
-    
+
     .footer__logo {
       display: none;
     }
@@ -1007,7 +1009,7 @@ section {
     .footer__row {
       justify-content: center;
     }
-    
+
     .footer__copyright a,
     .footer__copyright {
       font-size: 10px;
@@ -1044,6 +1046,7 @@ section {
   }
 
   .overmenu {
+      display: block;
     position: fixed;
     width: 100%;
     height: 100%;

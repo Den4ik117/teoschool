@@ -20,18 +20,16 @@
 
         #preloader-image {
             display: block;
-            margin: 0 auto;
-            margin-top: 30vh;
+            margin: 30vh auto 0;
         }
     </style>
     @vite('resources/scss/index.scss')
-{{--    <link rel="stylesheet" href="/css/index.css">--}}
     <link rel="shortcut icon" href="{{ asset('favicon.ico') }}" type="image/x-icon">
     <title>Бесплатные курсы для подготовки к ЕГЭ • TeoSchool</title>
 </head>
 <body>
 <div id="preloader">
-    <img id="preloader-image" src="/images/loading.gif" alt="Loading...">
+    <img id="preloader-image" src="{{ Vite::asset('resources/images/loading.gif') }}" alt="Loading...">
 </div>
 <div class="transparent" id="main"></div>
 <div id="headers">
@@ -39,7 +37,7 @@
         <div class="container">
             <div class="header__wrapper">
                 <a class="logo header__logo" href="#main">TEO SCHOOL</a>
-                <img src="/images/menu.svg" alt="Меню" class="header__menu" v-on:click="isActiveMenu = true">
+                <img src="{{ Vite::asset('resources/images/menu.svg') }}" alt="Меню" class="header__menu" v-on:click="isActiveMenu = true">
                 <nav class="nav">
                     <ul>
                         <li class="header__link header__link-active"><a href="#main">Главная</a></li>
@@ -56,7 +54,7 @@
         <div class="container">
             <div class="header__wrapper">
                 <a class="logo header__logo" href="#main">TEO SCHOOL</a>
-                <img src="/images/menu.svg" alt="Меню" class="header__menu" v-on:click="isActiveMenu = true">
+                <img src="{{ Vite::asset('resources/images/menu.svg') }}" alt="Меню" class="header__menu" v-on:click="isActiveMenu = true">
                 <nav class="nav">
                     <ul>
                         <li class="header__link" id="header__link-1"><a href="#main">Главная</a></li>
@@ -71,7 +69,7 @@
     </div>
     <div class="overmenu" v-if="isActiveMenu">
         <div class="overmenu__image">
-            <img src="/images/close.svg" alt="Закрыть" v-on:click="isActiveMenu = false">
+            <img src="{{ Vite::asset('resources/images/close.svg') }}" alt="Закрыть" v-on:click="isActiveMenu = false">
         </div>
         <ul>
             <li class="header__link"><a href="#main" v-on:click="isActiveMenu = false">Главная</a></li>
@@ -100,24 +98,24 @@
             <p class="description">Вот краткий список наших преимуществ, который отличает нас от других</p>
             <div class="than__row">
                 <div class="than__item">
-                    <img class="than__image" src="/images/than-1.svg" alt="Экономия денег">
+                    <img class="than__image" src="{{ Vite::asset('resources/images/than-1.svg') }}" alt="Экономия денег">
                     <p class="than__heading">Экономия денег</p>
                     <p class="than__description">Курсы, представленные на сайте, абсолютно бесплатны. Вам не придётся
                         платить.</p>
                 </div>
                 <div class="than__item">
-                    <img class="than__image" src="/images/than-2.svg" alt="Устраняем пробелы">
+                    <img class="than__image" src="{{ Vite::asset('resources/images/than-2.svg') }}" alt="Устраняем пробелы">
                     <p class="than__heading">Устраняем пробелы</p>
                     <p class="than__description">Вся информация, представленная в курсах, четко структурирована. Вам не
                         придётся бегать в поисках материала.</p>
                 </div>
                 <div class="than__item">
-                    <img class="than__image" src="/images/than-3.svg" alt="Рассказываем новости">
+                    <img class="than__image" src="{{ Vite::asset('resources/images/than-3.svg') }}" alt="Рассказываем новости">
                     <p class="than__heading">Рассказываем новости</p>
                     <p class="than__description">Вы всегда будете в курсе последних новостей из мира ОГЭ и ЕГЭ.</p>
                 </div>
                 <div class="than__item">
-                    <img class="than__image" src="/images/than-4.svg" alt="Не требует регистрации">
+                    <img class="than__image" src="{{ Vite::asset('resources/images/than-4.svg') }}" alt="Не требует регистрации">
                     <p class="than__heading">Не требует регистрации</p>
                     <p class="than__description">Чтобы начать проходить курс, Вам не нужно регистрироваться на
                         сайте.</p>
@@ -178,7 +176,7 @@
         <div class="container">
             <p class="heading">Доступные курсы</p>
             <p class="description">Список курсов, которые Вы можете почитать</p>
-            <img class="loading" src="/images/loading.gif" alt="Loading..." v-if="isLoading">
+            <img class="loading" src="{{ Vite::asset('resources/images/loading.gif') }}" alt="Loading..." v-if="isLoading">
             <div class="courses__row" v-else>
                 <div>
                     <div class="courses__left">
@@ -205,8 +203,8 @@
     <section class="news" id="news">
         <div class="container">
             <p class="heading">Последние новости</p>
-            <p class="description">Подпишитесь на нашу новостую рассылку ниже и будьте в курсе последних новостей!</p>
-            <img class="loading" src="/images/loading.gif" alt="Loading..." v-if="isLoading">
+            <p class="description">Подпишитесь на нашу новостную рассылку ниже и будьте в курсе последних новостей!</p>
+            <img class="loading" src="{{ Vite::asset('resources/images/loading.gif') }}" alt="Loading..." v-if="isLoading">
             <div class="news__row" v-else>
                 <template v-for="(oneNew, index) in news">
                     <a class="news__article" v-if="index < activeNews" :href="'/new/' + oneNew.id">
@@ -215,14 +213,14 @@
                             <p class="news__title">@{{ oneNew.title }}</p>
                             <p class="news__description">@{{ oneNew.content.substring(0, 200) }}...</p>
                             <div class="news__date">
-                                <img src="/images/calendar.svg" alt="•">
+                                <img src="{{ Vite::asset('resources/images/calendar.svg') }}" alt="•">
                                 <p>@{{ parseMyDate(oneNew.created_at) }}</p>
                             </div>
                         </div>
                     </a>
                 </template>
             </div>
-            <a href="" class="button button-transparent" v-on:click.prevent="activeNews += 3">Показать ещё</a>
+            <a href="javascript:void(0)" class="button button-transparent" v-on:click.prevent="activeNews += 3">Показать ещё</a>
         </div>
     </section>
 
@@ -233,9 +231,9 @@
             <form class="cheats__search" v-on:submit.prevent="findCheats()">
                 <input class="cheats__input" type="text" placeholder="Попробуйте найти нужную шпаргалку..."
                        v-model="search">
-                <img class="cheats__img" src="/images/search.svg" alt="Поиск!" v-on:click="findCheats()">
+                <img class="cheats__img" src="{{ Vite::asset('resources/images/search.svg') }}" alt="Поиск!" v-on:click="findCheats()">
             </form>
-            <img class="loading" src="/images/loading.gif" alt="Loading..." v-if="isLoading">
+            <img class="loading" src="{{ Vite::asset('resources/images/loading.gif') }}" alt="Loading..." v-if="isLoading">
             <template v-else>
                 <div class="cheats__container">
                     <p v-if="isEmpty(cheats)">Шпаргалки не найдены 🙁</p>
@@ -265,18 +263,6 @@
 
 @include('includes.footer')
 
-{{--  @include('components.metrics')--}}
-<script src="https://unpkg.com/vue@3.0.7/dist/vue.global.prod.js"></script>
-{{--<script src="/js/index.js"></script>--}}
 @vite('resources/js/index.js')
-{{--<script src="/js/app.js"></script>--}}
-<script>
-    window.onload = function () {
-        let preloader = document.getElementById('preloader');
-
-        setTimeout(() => preloader.classList.add('loaded'), 500);
-        setTimeout(() => preloader.remove(), 800);
-    };
-</script>
 </body>
 </html>

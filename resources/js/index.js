@@ -1,23 +1,30 @@
 import axios from "axios";
 import {createApp} from "vue/dist/vue.esm-bundler";
 
-const Headers = {
-  data() {
-    return {
-      isActiveMenu: false
-    };
-  },
-  methods: {}
+import.meta.glob(['../images/**']);
+
+window.onload = function () {
+    let preloader = document.getElementById('preloader');
+
+    setTimeout(() => preloader.classList.add('loaded'), 500);
+    setTimeout(() => preloader.remove(), 800);
 };
 
-createApp(Headers).mount('#headers');
+createApp({
+    data() {
+        return {
+            isActiveMenu: false
+        };
+    },
+    methods: {}
+}).mount('#headers');
 
 function getBodyScrollTop() {
-  return self.pageYOffset || (document.documentElement && document.documentElement.scrollTop) || (document.body && document.body.scrollTop);
+    return self.pageYOffset || (document.documentElement && document.documentElement.scrollTop) || (document.body && document.body.scrollTop);
 }
 
 function getScrollTop(elementId) {
-  return document.getElementById(elementId).offsetTop;
+    return document.getElementById(elementId).offsetTop;
 }
 
 let header = document.getElementById('top_header');
@@ -38,64 +45,64 @@ let cheatsOffset = getScrollTop('cheats');
 let cheatLink = document.getElementById('header__link-4');
 
 function fixHeader() {
-  let differenve = getBodyScrollTop() - getScrollTop('than');
+    let differenve = getBodyScrollTop() - getScrollTop('than');
 
-  if(differenve < 0) {
-    header.classList.remove('top_header-active');
-  } else {
-    header.classList.add('top_header-active');
-  }
+    if (differenve < 0) {
+        header.classList.remove('top_header-active');
+    } else {
+        header.classList.add('top_header-active');
+    }
 }
 
 function isActiveCourses() {
-  let differenve = getBodyScrollTop() - coursesOffset;
+    let differenve = getBodyScrollTop() - coursesOffset;
 
-  if(differenve >= 0 && differenve < coursesHeight) {
-    courseLink.classList.add('header__link-active');
-  } else {
-    courseLink.classList.remove('header__link-active');
-  }
+    if (differenve >= 0 && differenve < coursesHeight) {
+        courseLink.classList.add('header__link-active');
+    } else {
+        courseLink.classList.remove('header__link-active');
+    }
 }
 
 function isActiveNews() {
-  let differenve = getBodyScrollTop() - newsOffset;
+    let differenve = getBodyScrollTop() - newsOffset;
 
-  if(differenve >= 0 && differenve < newsHeight) {
-    newLink.classList.add('header__link-active');
-  } else {
-    newLink.classList.remove('header__link-active');
-  }
+    if (differenve >= 0 && differenve < newsHeight) {
+        newLink.classList.add('header__link-active');
+    } else {
+        newLink.classList.remove('header__link-active');
+    }
 }
 
 function isActiveCheats() {
-  let differenve = getBodyScrollTop() - cheatsOffset;
+    let differenve = getBodyScrollTop() - cheatsOffset;
 
-  if(differenve >= 0 && differenve < cheatsHeight) {
-    cheatLink.classList.add('header__link-active');
-  } else {
-    cheatLink.classList.remove('header__link-active');
-  }
+    if (differenve >= 0 && differenve < cheatsHeight) {
+        cheatLink.classList.add('header__link-active');
+    } else {
+        cheatLink.classList.remove('header__link-active');
+    }
 }
 
 function init() {
-  fixHeader();
-  isActiveCourses();
-  isActiveNews();
-  isActiveCheats();
+    fixHeader();
+    isActiveCourses();
+    isActiveNews();
+    isActiveCheats();
 }
 
-document.addEventListener('scroll', function() {
-  if(document.documentElement.clientWidth >= 721) init();
-  else fixHeader();
+document.addEventListener('scroll', function () {
+    if (document.documentElement.clientWidth >= 721) init();
+    else fixHeader();
 });
 
 init();
 
 
-
 setInterval(() => {
-  let iframe = document.getElementById("iframe");
-  iframe.style.height = iframe.contentWindow.document.body.scrollHeight + 'px';
+    let iframe = document.querySelector('#iframe');
+    // console.log(iframe);
+    iframe.style.height = iframe.contentWindow.document.body.scrollHeight + 'px';
 }, 1000);
 
 createApp({
@@ -117,12 +124,13 @@ createApp({
         }
     },
     mounted() {
-        let _this = this;
         axios.get('/api/courses')
-            .then(function(response) {
-                _this.courses = response.data;
-                _this.isLoading = false;
-                _this.showCourse(0);
+            .then(response => {
+                this.courses = response.data;
+                this.isLoading = false;
+                this.showCourse(0);
+            })
+            .catch(e => {
             });
     }
 }).mount('#courses');
@@ -145,11 +153,12 @@ createApp({
         }
     },
     mounted() {
-        let _this = this;
         axios.get('/api/news')
-            .then(function(response) {
-                _this.news = response.data;
-                _this.isLoading = false;
+            .then(response => {
+                this.news = response.data;
+                this.isLoading = false;
+            })
+            .catch(e => {
             });
     }
 }).mount('#news');
@@ -169,20 +178,22 @@ createApp({
         },
         findCheats() {
             this.isLoading = true;
-            let _this = this;
-            axios.post('/api/cheats', { search: this.search })
-                .then(function(response) {
-                    _this.cheats = response.data;
-                    _this.isLoading = false;
+            axios.post('/api/cheats', {search: this.search})
+                .then(response => {
+                    this.cheats = response.data;
+                    this.isLoading = false;
+                })
+                .catch(e => {
                 });
         }
     },
     mounted() {
-        let _this = this;
         axios.get('/api/cheats')
-            .then(function(response) {
-                _this.cheats = response.data;
-                _this.isLoading = false;
+            .then(response => {
+                this.cheats = response.data;
+                this.isLoading = false;
+            })
+            .catch(e => {
             });
     }
 }).mount('#cheats');
