@@ -3,8 +3,6 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
-use App\Http\Controllers\HomeController;
-
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -16,11 +14,6 @@ use App\Http\Controllers\HomeController;
 |
 */
 
-// Route::middleware('auth:api')->get('/user', function (Request $request) {
-//     return $request->user();
-// });
-
-Route::get('/courses', [HomeController::class, 'sendCourses']);
-Route::get('/news', [HomeController::class, 'sendNews']);
-Route::get('/cheats', [HomeController::class, 'sendCheats']);
-Route::post('/cheats', [HomeController::class, 'sendAnyCheats']);
+Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
+    return $request->user();
+});
