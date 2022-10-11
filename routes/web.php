@@ -12,9 +12,12 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
+Route::get('subscribe', function() {})->name('subscribe');
+Route::get('privacy', function() {})->name('privacy');
+Route::get('contacts', function() {})->name('contacts');
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('index');
 });
 
 Route::get('/dashboard', function () {

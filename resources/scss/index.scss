@@ -1,0 +1,1098 @@
+//! ПОДКЛЮЧЕНИЕ ШРИФТОВ
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@700&family=Montserrat:wght@400;500;600;700&display=swap');
+
+@font-face {
+  font-family: 'socials';
+  src: url('/fonts/socials.ttf?klugn') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: block;
+}
+
+[class^="icon-"], [class*=" icon-"] {
+  font-family: 'socials' !important;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+}
+
+
+//! ПЕРЕМЕННЫЕ
+$color-black: #373F41;
+$color-blue: #3C64B1;
+$color-blue-opacity: rgba(60, 100, 177, 0.2);
+$color-gray: #737B7D;
+$color-footer: #292929;
+
+$font-lato: 'Lato', sans-serif;
+$font-montserrat: 'Montserrat', sans-serif;
+
+
+//! СБРОС ДЕФОЛТНЫХ СТИЛЕЙ
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+ul, ol {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+body, h1, h2, h3, h4, p, li, figure, figcaption, blockquote, dl, dd {
+  margin: 0;
+}
+
+body {
+  min-height: 100vh;
+  scroll-behavior: smooth;
+  text-rendering: optimizeSpeed;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+input, button, textarea, select {
+  font: inherit;
+}
+
+input:focus, button:focus, textarea:focus {
+  outline: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+
+//! ДЕФОЛТНЫЕ СТИЛИ
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  color: $color-black;
+  font-family: $font-montserrat;
+}
+
+a {
+  color: $color-black;
+  text-decoration: none;
+  font: inherit;
+}
+
+.container {
+  display: block;
+  max-width: 1110px;
+  margin: 0 auto;
+}
+
+li {
+  display: inline-block;
+}
+
+h1 {
+  font-size: 44px;
+  font-weight: 500;
+  line-height: 56px;
+  letter-spacing: 0.2px;
+}
+
+h2 {
+  font-weight: 500;
+}
+
+.description {
+  color: $color-gray;
+  line-height: 22px;
+  letter-spacing: 0.3px;
+  font-size: 16px;
+  text-align: center;
+}
+
+.heading {
+  font-weight: 600;
+  font-size: 32px;
+  letter-spacing: 0.1px;
+  line-height: 40px;
+  text-align: center;
+  margin-bottom: 24px;
+}
+
+.button {
+  background-color: $color-blue;
+  color: #fff;
+
+  padding: 12px 18px;
+  letter-spacing: 0.3px;
+  font-weight: 600;
+}
+
+.button:hover {
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+.button.button-transparent {
+  background-color: transparent;
+  color: $color-blue;
+  border: 1px solid $color-blue;
+}
+
+section {
+  padding: 120px 0;
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: center;
+
+  thead {
+    font-size: 18px;
+    font-weight: 600;
+    line-height: 16px;
+    letter-spacing: 0.1px;
+  }
+
+  tbody {
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 16px;
+    letter-spacing: 0.1px;
+  }
+
+  td {
+    border: 1px solid #ccc;
+    padding: 24px 16px;
+  }
+
+  a {
+    text-decoration: underline;
+  }
+}
+
+.align-left {
+  text-align: left;
+}
+
+.logo {
+  font-size: 24px;
+  font-family: $font-lato;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+.nav {
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.loading {
+  display: block;
+  margin: 0 auto;
+}
+
+//! ШАПКА
+.header {
+  padding: 30px 0;
+  background-color: $color-blue-opacity;
+
+  .header__wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .header__logo {
+    color: $color-blue;
+  }
+
+  .header__link:hover a {
+    color: $color-blue;
+    transition: .3s;
+  }
+
+  .header__link:not(:first-child) {
+    margin-left: 32px;
+  }
+  
+  .header__link-active a {
+    color: $color-blue;
+  }
+
+  .header__menu {
+    display: none;
+  }
+}
+
+
+//! ВЫЕЗЖАЮЩАЯ СВЕРХУ ШАПКА
+.top_header {
+  width: 100%;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  background-color: #ffffffee;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  padding: 16px 0;
+  transform: translate(0, -85px);
+}
+
+.top_header.top_header-active {
+  transform: translate(0, 0);
+  transition: .5s;
+}
+
+//! ОБЛОЖКА
+.cover {
+  background-color: $color-blue-opacity;
+  padding: 137px 0;
+  text-align: center;
+
+  .cover__wrapper {
+    display: block;
+    margin: 0 auto;
+    max-width: 730px;
+  }
+
+  .cover__description {
+    margin-top: 32px;
+    margin-bottom: 56px;
+  }
+
+  .cover__cta a:first-child {
+    margin-right: 16px;
+  }
+}
+
+
+//! ЧЕМ МЫ БУДЕМ ПОЛЕЗНЫ
+.than {
+  .than__row {
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    // grid-auto-rows: minmax(50px, auto);
+    grid-gap: 30px;
+    margin-top: 64px;
+  }
+
+  .than__item {
+    text-align: center;
+  }
+
+  .than__image {
+    display: block;
+    width: 40px;
+    height: 40px;
+    margin: 0 auto;
+    margin-bottom: 24px;
+  }
+
+  .than__heading {
+    line-height: 24px;
+    font-size: 18px;
+    letter-spacing: 0.1px;
+    font-weight: 600;
+    margin-bottom: 12px;
+  }
+
+  .than__description {
+    line-height: 20px;
+    font-size: 14px;
+    letter-spacing: 0.2px;
+    font-weight: 500;
+  }
+}
+
+
+//! КОМУ МЫ БУДЕМ ПОЛЕЗНЫ
+.whom {
+  text-align: center;
+  background-color: #fafafa;
+
+  .whom__description {
+    display: block;
+    max-width: 825px;
+    margin: 0 auto;
+    color: $color-black;
+  }
+}
+
+
+//! КАК МЫ БУДЕМ ПОЛЕЗНЫ
+.how {
+  .how__timeline {
+    max-width: 540px;
+    display: block;
+    margin: 0 auto;
+    margin-top: 64px;
+  }
+
+  .how__grid {
+    display: grid;
+    grid-template-columns: 255px 30px 255px;
+  }
+
+  .how__left {
+    text-align: right;
+    margin-bottom: 30px;
+  }
+  .how__right {
+    text-align: left;
+    margin-bottom: 30px;
+  }
+
+  .how__step {
+    line-height: 22px;
+    font-size: 14px;
+    letter-spacing: 0.3px;
+    font-weight: 600;
+    margin-bottom: 4px;
+  }
+
+  .how__description {
+    line-height: 22px;
+    font-size: 12px;
+    letter-spacing: 0.3px;
+    font-weight: 500;
+    color: $color-gray;
+  }
+
+  .how__circle {
+    width: 12px;
+    height: 12px;
+    margin: 0 auto;
+    margin-top: 4px;
+    border-radius: 100%;
+    background-color: rgba(60, 100, 177, 0.8);
+  }
+
+  .how__line {
+    width: 2px;
+    height: calc(100% - 16px);
+    margin: 0 auto;
+    margin-top: 2px;
+    background-color: rgba(60, 100, 177, 0.4);;
+    border-radius: 24px;
+  }
+}
+
+
+//! ПРИЗЫВ К ОБУЧЕНИЮ
+
+.cta {
+  background-image: url(/images/cta.webp);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-blend-mode: multiply;
+  background-color: rgba(0, 0, 0, 0.5);
+  background-attachment: fixed;
+  text-align: center;
+
+  .cta__heading {
+    color: #fff;
+    margin-bottom: 64px;
+  }
+}
+
+
+//! КУРСЫ
+.courses {
+  .courses__row {
+    padding-top: 64px;
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    grid-gap: 30px;
+  }
+
+  .courses__left {
+    border: 1px solid $color-black;
+    border-radius: 10px;
+  }
+
+  .courses__list li {
+    padding: 12px 24px;
+    width: 100%;
+    cursor: pointer;
+    font-size: 18px;
+    letter-spacing: 0.2px;
+    line-height: 24px;
+    font-weight: 500;
+  }
+
+  .courses__list li:not(.courses__subject-active) span {
+    display: none;
+  }
+  
+  .courses__list li span {
+    margin-right: 4px;
+  }
+
+  .courses__list li:not(:first-child) {
+    border-top: 1px solid $color-black;
+  }
+
+  .courses__list li:hover {
+    color: $color-blue;
+    transition: .3s;
+  }
+
+  .courses__list li:hover span {
+    display: inline-block;
+  }
+
+  .courses__subject-active {
+    color: $color-blue;
+  }
+
+  .courses__right {
+    border: 1px solid $color-black;
+    border-radius: 10px;
+  }
+  
+  .courses__title {
+    font-size: 24px;
+    letter-spacing: 0.2px;
+    line-height: 24px;
+    font-weight: 600;
+    padding: 24px;
+    border-bottom: 1px solid $color-black;
+  }
+
+  .courses__body {
+    padding: 24px;
+  }
+
+  .courses__course_description {
+    font-size: 16px;
+    letter-spacing: 0.2px;
+    line-height: 24px;
+    font-weight: 500;
+  }
+
+  .courses__course_part {
+    font-size: 18px;
+    letter-spacing: 0.2px;
+    line-height: 24px;
+    font-weight: 600;
+    margin-top: 32px;
+    margin-bottom: 16px;
+  }
+
+  .courses__lessons {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-gap: 16px;
+    grid-auto-rows: minmax(80px, auto);
+  }
+
+  .courses__lesson {
+    background: linear-gradient(120.41deg, rgba(255, 170, 133, 0.8) 15.75%, rgba(255, 82, 229, 0.8) 81.65%);
+    padding: 10px 16px;
+    border-radius: 10px;
+    border: 1px solid $color-black;
+    font-size: 14px;
+    line-height: 16px;
+    letter-spacing: 0.2px;
+    font-weight: 500;
+  }
+
+  .courses__lesson:hover {
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  }
+}
+
+
+//! НОВОСТИ
+.news {
+  background-color: #fafafa;
+  text-align: center;
+
+  .news__row {
+    margin: 64px 0;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-auto-rows: minmax(400px, auto);
+    grid-gap: 30px;
+  }
+
+  .news__article {
+    border: 1px solid $color-black;
+    text-align: left;
+  }
+  .news__article:hover {
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  }
+
+  .news__image {
+    height: 240px;
+    width: 100%;
+    object-fit: cover;
+  }
+
+  .news__content {
+    padding: 24px;
+  }
+
+  .news__title {
+    font-weight: 600;
+    font-size: 18px;
+    line-height: 24px;
+    letter-spacing: 0.1px;
+    margin-bottom: 16px;
+  }
+
+  .news__description {
+    color: $color-gray;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 20px;
+    letter-spacing: 0.2px;
+    margin-bottom: 24px;
+  }
+
+  .news__date {
+    display: flex;
+    align-items: center;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 16px;
+    letter-spacing: 0.2px;
+  }
+  .news__date img {
+    width: 16px;
+    height: 16px;
+    margin-right: 8px;
+  }
+}
+
+
+//! ШПАРГАЛКИ
+.cheats {
+  text-align: center;
+  .cheats__search {
+    margin: 64px 0;
+    position: relative;
+  }
+
+  .cheats__input {
+    width: 100%;
+    padding: 16px 25px;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+  }
+
+  .cheats__img {
+    width: 24px;
+    height: 24px;
+    position: absolute;
+    top: 16px;
+    right: 24px;
+    cursor: pointer;
+  }
+
+  .cheats__table {
+    margin-bottom: 64px;
+  }
+}
+
+
+//! ПОДПИСАТЬСЯ НА НОВОСТИ
+.subscribe {
+  .subscribe__content {
+    background-color: rgba(60, 100, 177, 0.06);
+    padding: 64px 0;
+    // display: flex;
+  }
+
+  .subscribe__form {
+    margin-top: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .subscribe__input {
+    border: 1px solid $color-blue;
+    padding: 11px 36px 11px 18px;
+    margin-right: 8px;
+  }
+
+  .subscribe__button {
+    border: none;
+    cursor: pointer;
+  }
+
+  .subscribe__agree {
+    width: 80%;
+    margin: 0 auto;
+    text-align: center;
+    margin-top: 16px;
+    font-size: 12px;
+
+    a {
+      text-decoration: underline;
+    }
+  }
+}
+
+
+//! ПОДВАЛ
+.footer {
+  background-color: $color-footer;
+  padding: 30px 0;
+  color: #fff;
+
+  .footer__row,
+  .footer__bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .footer__logo {
+    color: #fff;
+  }
+
+  .footer__link a {
+    color: #fff;
+    letter-spacing: 0.2px;
+    font-weight: 500;
+  }
+
+  .footer__link a:hover {
+    text-decoration: underline;
+  }
+
+  .footer__link:not(:first-child) {
+    margin-left: 32px;
+  }
+
+  .footer__bottom {
+    border-top: 1px solid rgba(255, 255, 255, 0.5);
+    padding-top: 24px;
+    margin-top: 32px;
+  }
+
+  .footer__copyright a,
+  .footer__copyright {
+    color: #fff;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 18px;
+    letter-spacing: 0.2px;
+  }
+  
+  .footer__copyright a {
+    text-decoration: underline;
+  }
+
+  .footer__social {
+    font-size: 24px;
+    color: #fff;
+    margin-left: 8px;
+  }
+
+  .footer__social:hover {
+    color: rgba(255, 255, 255, 0.8);
+    transition: .2s;
+  }
+
+  .icon-social-1::before {
+    content: '\e900';
+  }
+
+  .icon-social-2::before {
+    content: '\e901';
+  }
+
+  .icon-social-3::before {
+    content: '\e902';
+  }
+
+  .icon-social-4::before {
+    content: '\e903';
+  }
+}
+
+
+//! АДАПТИВ
+@media screen and (max-width: 1110px) and (min-width: 961px) {
+  .container {
+    max-width: 960px;
+  }
+}
+
+@media screen and (max-width: 960px) and (min-width: 721px) {
+  .container {
+    max-width: 700px;
+  }
+
+  h1 {
+    font-size: 36px;
+    font-weight: 600;
+  }
+
+  .header {
+    .button {
+      display: none;
+    }
+  }
+
+  .courses {
+    .courses__row {
+      grid-template-columns: 100%;
+    }
+
+    .courses__lessons {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+
+  .news {
+    .news__row {
+      width: 450px;
+      margin: 64px auto;
+      grid-template-columns: 1fr;
+    }
+  }
+
+  .footer {
+    .footer__link:not(:first-child) {
+      margin-left: 16px;
+    }
+  }
+
+  .cover {
+    .cover__wrapper {
+      max-width: 600px;
+    }
+  }
+}
+
+@media screen and (max-width: 720px) and (min-width: 541px) {
+  .container {
+    max-width: 90%;
+  }
+
+  .heading {
+    font-size: 28px;
+  }
+
+  .than {
+    .than__row {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  .cheats {
+    .cheats__table {
+      thead {
+        font-size: 14px;
+      }
+      tbody {
+        font-size: 12px;
+      }
+    }
+  }
+
+  h1 {
+    font-size: 36px;
+    font-weight: 600;
+  }
+
+  .header {
+    .button {
+      display: none;
+    }
+
+    .header__menu {
+      display: block;
+    }
+
+    .nav {
+      display: none;
+    }
+  }
+
+  .courses {
+    .courses__row {
+      grid-template-columns: 100%;
+    }
+
+    .courses__lessons {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+
+  .news {
+    .news__row {
+      width: 450px;
+      margin: 64px auto;
+      grid-template-columns: 1fr;
+    }
+  }
+
+  .footer {
+    .footer__link:not(:first-child) {
+      margin-left: 16px;
+    }
+    
+    .footer__logo {
+      display: none;
+    }
+
+    .footer__row {
+      justify-content: center;
+    }
+    
+    .footer__copyright a,
+    .footer__copyright {
+      font-size: 10px;
+    }
+  }
+
+  .cover {
+    .cover__wrapper {
+      max-width: 600px;
+    }
+  }
+
+  .overmenu {
+    display: none;
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color: #fff;
+
+    .overmenu__image {
+      width: 100%;
+      height: 64px;
+      margin-bottom: 32px;
+    }
+
+    .overmenu__image img {
+      width: 32px;
+      height: 32px;
+      margin: 32px;
+      float: right;
+    }
+
+    .header__link {
+      display: block;
+      text-align: right;
+      margin-right: 16px;
+      margin-bottom: 16px;
+      font-size: 32px;
+    }
+  }
+}
+
+@media screen and (max-width: 540px) {
+  section {
+    padding: 80px 0;
+  }
+
+  .container {
+    max-width: 90%;
+  }
+
+  .heading {
+    font-size: 28px;
+  }
+
+  .than {
+    .than__row {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    .than__heading {
+      font-size: 16px;
+    }
+
+    .than__description {
+      font-size: 12px;
+    }
+  }
+
+  .cheats {
+    .cheats__table {
+      thead {
+        font-size: 14px;
+      }
+      tbody {
+        font-size: 12px;
+      }
+    }
+
+    .cheats__container {
+      width: 90vw;
+      overflow-x: auto;
+    }
+
+    .cheats__input {
+      font-size: 14px;
+    }
+  }
+
+  h1 {
+    font-size: 32px;
+    font-weight: 500;
+    line-height: 44px;
+  }
+
+  .description {
+    font-size: 14px;
+  }
+
+  .header {
+    .button {
+      display: none;
+    }
+
+    .header__menu {
+      display: block;
+    }
+
+    .nav {
+      display: none;
+    }
+  }
+
+  .courses {
+    .courses__row {
+      grid-template-columns: 100%;
+    }
+
+    .courses__lessons {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  .news {
+    .news__row {
+      width: 300px;
+      margin: 64px auto;
+      grid-template-columns: 1fr;
+    }
+  }
+
+  .footer {
+    .footer__link {
+      display: block;
+      text-align: center;
+      margin: 0 !important;
+      margin-bottom: 16px;
+    }
+    
+    .footer__logo {
+      display: none;
+    }
+
+    .footer__row {
+      justify-content: center;
+    }
+    
+    .footer__copyright a,
+    .footer__copyright {
+      font-size: 10px;
+    }
+  }
+
+  .how {
+    .how__timeline {
+      width: 310px;
+    }
+
+    .how__grid {
+      grid-template-columns: 140px 30px 140px;
+      margin: 0 auto;
+    }
+  }
+
+  .cover {
+    padding: 80px 0;
+    .cover__cta {
+      display: grid;
+      grid-template-columns: 1fr;
+      width: 80%;
+      margin: 0 auto;
+
+      a {
+        margin-right: 0 !important;
+        margin-bottom: 16px;
+      }
+    }
+    .cover__wrapper {
+      max-width: 600px;
+    }
+  }
+
+  .overmenu {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color: #fff;
+
+    .overmenu__image {
+      width: 100%;
+      height: 64px;
+      margin-bottom: 32px;
+    }
+
+    .overmenu__image img {
+      width: 32px;
+      height: 32px;
+      margin: 32px;
+      float: right;
+    }
+
+    .header__link {
+      display: block;
+      text-align: right;
+      margin-right: 16px;
+      margin-bottom: 16px;
+      font-size: 32px;
+    }
+  }
+
+  .subscribe {
+    .subscribe__form {
+      display: block;
+
+    }
+
+    .subscribe__input,
+    .subscribe__button {
+      display: block;
+      margin: 0 auto;
+      margin-bottom: 16px;
+    }
+  }
+}
+
+@media screen and (max-width: 330px) {
+  .courses {
+    .courses__lessons {
+      grid-template-columns: repeat(1, 1fr);
+    }
+  }
+}
