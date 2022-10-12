@@ -15,6 +15,9 @@ return new class extends Migration
     {
         Schema::create('cheatsheets', function (Blueprint $table) {
             $table->id();
+            $table->string('name');
+            $table->string('url');
+            $table->foreignId('course_id');
             $table->timestamps();
         });
     }

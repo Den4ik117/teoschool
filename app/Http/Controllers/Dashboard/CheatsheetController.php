@@ -3,84 +3,51 @@
 namespace App\Http\Controllers\Dashboard;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Dashboard\CheatsheetRequest;
 use App\Models\Cheatsheet;
-use Illuminate\Http\Request;
+use App\Models\Course;
 
 class CheatsheetController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function index()
     {
-        //
+        $cheatsheets = Cheatsheet::all();
+
+        return view('dashboard.cheatsheets.index', compact('cheatsheets'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function create()
     {
-        //
+        $courses = Course::all();
+
+        return view('dashboard.cheatsheets.create', compact('courses'));
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
+    public function store(CheatsheetRequest $request)
     {
-        //
+        Cheatsheet::create($request->validated());
+
+        return to_route('dashboard.cheatsheets.index')->with('success', __('messages.dashboard.cheatsheets.created'));
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Cheatsheet  $cheatsheet
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Cheatsheet $cheatsheet)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Cheatsheet  $cheatsheet
-     * @return \Illuminate\Http\Response
-     */
     public function edit(Cheatsheet $cheatsheet)
     {
-        //
+        $courses = Course::all();
+
+        return view('dashboard.cheatsheets.edit', compact(['cheatsheet', 'courses']));
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Cheatsheet  $cheatsheet
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, Cheatsheet $cheatsheet)
+    public function update(CheatsheetRequest $request, Cheatsheet $cheatsheet)
     {
-        //
+        $cheatsheet->update($request->validated());
+
+        return to_route('dashboard.cheatsheets.index')->with('success', __('messages.dashboard.cheatsheets.updated'));
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Cheatsheet  $cheatsheet
-     * @return \Illuminate\Http\Response
-     */
     public function destroy(Cheatsheet $cheatsheet)
     {
-        //
+        $cheatsheet->delete();
+
+        return to_route('dashboard.cheatsheets.index')->with('success', __('messages.dashboard.cheatsheets.deleted'));
     }
 }

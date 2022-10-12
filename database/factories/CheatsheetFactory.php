@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\Course;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -17,7 +18,9 @@ class CheatsheetFactory extends Factory
     public function definition()
     {
         return [
-            //
+            'name' => fake()->text(255),
+            'url' => fake()->url(),
+            'course_id' => fake()->randomElement(Course::pluck('id'))
         ];
     }
 }

@@ -8,4 +8,15 @@ use Illuminate\Database\Eloquent\Model;
 class Cheatsheet extends Model
 {
     use HasFactory;
+
+    protected $fillable = [
+        'name',
+        'url',
+        'course_id'
+    ];
+
+    public function course()
+    {
+        return $this->belongsTo(Course::class);
+    }
 }
