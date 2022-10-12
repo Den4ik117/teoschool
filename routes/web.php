@@ -5,6 +5,7 @@ use App\Http\Controllers\Dashboard\CourseController;
 use App\Http\Controllers\Dashboard\DashboardController;
 use App\Http\Controllers\Dashboard\InformationController;
 use App\Http\Controllers\Dashboard\UserController;
+use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -21,7 +22,7 @@ Route::get('subscribe', function() {})->name('subscribe');
 Route::get('privacy', function() {})->name('privacy');
 Route::get('contacts', function() {})->name('contacts');
 
-Route::view('/', 'index');
+Route::get('/', HomeController::class);
 
 Route::get('/dashboard', DashboardController::class)->middleware(['auth', 'verified'])->name('dashboard');
 

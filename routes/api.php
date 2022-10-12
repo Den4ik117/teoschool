@@ -1,6 +1,9 @@
 <?php
 
+use App\Http\Controllers\CheatsheetController;
+use App\Http\Controllers\CourseController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\InformationController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -15,11 +18,10 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
-});
+//Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
+//    return $request->user();
+//});
 
-Route::get('/courses', [HomeController::class, 'sendCourses']);
-Route::get('/news', [HomeController::class, 'sendNews']);
-Route::get('/cheats', [HomeController::class, 'sendCheats']);
-Route::post('/cheats', [HomeController::class, 'sendAnyCheats']);
+Route::get('/courses', CourseController::class);
+Route::get('/information', InformationController::class);
+Route::get('/cheatsheets', CheatsheetController::class);

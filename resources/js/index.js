@@ -1,5 +1,8 @@
 import axios from "axios";
 import {createApp} from "vue/dist/vue.esm-bundler";
+import Courses from "./components/Courses.vue";
+import News from "./components/News.vue";
+import Cheatsheets from "./components/Cheatsheets.vue";
 
 import.meta.glob(['../images/**']);
 
@@ -105,95 +108,8 @@ setInterval(() => {
     iframe.style.height = iframe.contentWindow.document.body.scrollHeight + 'px';
 }, 1000);
 
-createApp({
-    data() {
-        return {
-            isLoading: true,
-            courses: null,
-            activeCourse: null
-        };
-    },
-    methods: {
-        showCourse(i) {
-            this.activeCourse = this.courses[i];
+createApp(Courses).mount('#courses');
 
-            setTimeout(() => {
-                let iframe = document.getElementById("iframe");
-                iframe.style.height = iframe.contentWindow.document.body.scrollHeight + 'px';
-            }, 400);
-        }
-    },
-    mounted() {
-        axios.get('/api/courses')
-            .then(response => {
-                this.courses = response.data;
-                this.isLoading = false;
-                this.showCourse(0);
-            })
-            .catch(e => {
-            });
-    }
-}).mount('#courses');
+createApp(News).mount('#news');
 
-createApp({
-    data() {
-        return {
-            isLoading: true,
-            news: null,
-            activeNews: 3
-        };
-    },
-    methods: {
-        parseMyDate(date) {
-            let d = new Date(date);
-
-            let newDate = d.getDate() + '/' + (d.getMonth() + 1) + '/' + d.getFullYear() + ' ' + d.getHours() + ':' + d.getMinutes();
-
-            return newDate;
-        }
-    },
-    mounted() {
-        axios.get('/api/news')
-            .then(response => {
-                this.news = response.data;
-                this.isLoading = false;
-            })
-            .catch(e => {
-            });
-    }
-}).mount('#news');
-
-createApp({
-    data() {
-        return {
-            isLoading: true,
-            cheats: null,
-            search: ''
-        };
-    },
-    methods: {
-        isEmpty(obj) {
-            for (let key in obj) return false;
-            return true;
-        },
-        findCheats() {
-            this.isLoading = true;
-            axios.post('/api/cheats', {search: this.search})
-                .then(response => {
-                    this.cheats = response.data;
-                    this.isLoading = false;
-                })
-                .catch(e => {
-                });
-        }
-    },
-    mounted() {
-        axios.get('/api/cheats')
-            .then(response => {
-                this.cheats = response.data;
-                this.isLoading = false;
-            })
-            .catch(e => {
-            });
-    }
-}).mount('#cheats');
+createApp(Cheatsheets).mount('#cheats');

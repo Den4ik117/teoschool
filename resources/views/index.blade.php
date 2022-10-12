@@ -172,91 +172,11 @@
         <p class="heading cta__heading">Готовы начать учиться? Тогда за дело!</p>
         <a class="button" href="#courses">Посмотреть курсы</a>
     </section>
-    <section class="courses" id="courses">
-        <div class="container">
-            <p class="heading">Доступные курсы</p>
-            <p class="description">Список курсов, которые Вы можете почитать</p>
-            <img class="loading" src="{{ Vite::asset('resources/images/loading.gif') }}" alt="Loading..." v-if="isLoading">
-            <div class="courses__row" v-else>
-                <div>
-                    <div class="courses__left">
-                        <ul class="courses__list">
-                            <li v-for="(course, index) in courses" v-on:click="showCourse(index)"
-                                :class="{ 'courses__subject-active': course.name == activeCourse.name }"><span>»</span>@{{
-                                course.name }}
-                            </li>
-                        </ul>
-                    </div>
-                </div>
+    <section class="courses" id="courses"></section>
 
-                <div class="courses__right">
-                    <div class="courses__title">@{{ activeCourse.name }}</div>
-                    <div class="courses__body">
-                        <iframe id="iframe" :src="activeCourse.course_url" frameborder="0" width="100%"
-                                style="min-height: 400px"></iframe>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+    <section class="news" id="news"></section>
 
-    <section class="news" id="news">
-        <div class="container">
-            <p class="heading">Последние новости</p>
-            <p class="description">Подпишитесь на нашу новостную рассылку ниже и будьте в курсе последних новостей!</p>
-            <img class="loading" src="{{ Vite::asset('resources/images/loading.gif') }}" alt="Loading..." v-if="isLoading">
-            <div class="news__row" v-else>
-                <template v-for="(oneNew, index) in news">
-                    <a class="news__article" v-if="index < activeNews" :href="'/new/' + oneNew.id">
-                        <img class="news__image" :src="oneNew.image_url" alt="Изображение новости">
-                        <div class="news__content">
-                            <p class="news__title">@{{ oneNew.title }}</p>
-                            <p class="news__description">@{{ oneNew.content.substring(0, 200) }}...</p>
-                            <div class="news__date">
-                                <img src="{{ Vite::asset('resources/images/calendar.svg') }}" alt="•">
-                                <p>@{{ parseMyDate(oneNew.created_at) }}</p>
-                            </div>
-                        </div>
-                    </a>
-                </template>
-            </div>
-            <a href="javascript:void(0)" class="button button-transparent" v-on:click.prevent="activeNews += 3">Показать ещё</a>
-        </div>
-    </section>
-
-    <section class="cheats" id="cheats">
-        <div class="container">
-            <p class="heading">Шпаргалки</p>
-            <p class="description">Используйте поиск, чтобы найти нужную шпаргалку</p>
-            <form class="cheats__search" v-on:submit.prevent="findCheats()">
-                <input class="cheats__input" type="text" placeholder="Попробуйте найти нужную шпаргалку..."
-                       v-model="search">
-                <img class="cheats__img" src="{{ Vite::asset('resources/images/search.svg') }}" alt="Поиск!" v-on:click="findCheats()">
-            </form>
-            <img class="loading" src="{{ Vite::asset('resources/images/loading.gif') }}" alt="Loading..." v-if="isLoading">
-            <template v-else>
-                <div class="cheats__container">
-                    <p v-if="isEmpty(cheats)">Шпаргалки не найдены 🙁</p>
-                    <table class="table cheats__table" v-else>
-                        <thead>
-                        <tr>
-                            <td>Название</td>
-                            <td>Школьный предмет</td>
-                            <td>Открыть</td>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        <tr v-for="cheat in cheats">
-                            <td class="align-left">@{{ cheat.name }}</td>
-                            <td>@{{ cheat.subject }}</td>
-                            <td><a :href="cheat.url">Открыть</a></td>
-                        </tr>
-                        </tbody>
-                    </table>
-                </div>
-            </template>
-        </div>
-    </section>
+    <section class="cheats" id="cheats"></section>
 
     @include('includes.subscribe')
 </main>
