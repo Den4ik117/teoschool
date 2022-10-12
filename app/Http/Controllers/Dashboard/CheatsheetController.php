@@ -9,6 +9,11 @@ use App\Models\Course;
 
 class CheatsheetController extends Controller
 {
+    public function __construct()
+    {
+        $this->authorizeResource(Cheatsheet::class);
+    }
+
     public function index()
     {
         $cheatsheets = Cheatsheet::all();

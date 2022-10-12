@@ -10,22 +10,22 @@ class CheatsheetPolicy
 {
     use HandlesAuthorization;
 
-    public function viewAny(User $user)
+    public function viewAny(User $user): bool
     {
         return $user->isCourseCreator() || $user->isCheatSheetWriter();
     }
 
-    public function create(User $user)
+    public function create(User $user): bool
     {
         return $user->isCourseCreator() || $user->isCheatSheetWriter();
     }
 
-    public function update(User $user, Cheatsheet $cheatsheet)
+    public function update(User $user, Cheatsheet $cheatsheet): bool
     {
         return $user->isCourseCreator() || $user->isCheatSheetWriter();
     }
 
-    public function delete(User $user, Cheatsheet $cheatsheet)
+    public function delete(User $user, Cheatsheet $cheatsheet): bool
     {
         return $user->isCourseCreator() || $user->isCheatSheetWriter();
     }

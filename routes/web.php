@@ -3,6 +3,7 @@
 use App\Http\Controllers\Dashboard\CheatsheetController;
 use App\Http\Controllers\Dashboard\CourseController;
 use App\Http\Controllers\Dashboard\DashboardController;
+use App\Http\Controllers\Dashboard\InformationController;
 use App\Http\Controllers\Dashboard\UserController;
 use Illuminate\Support\Facades\Route;
 
@@ -28,6 +29,7 @@ Route::middleware(['auth', 'verified'])->prefix('dashboard')->name('dashboard.')
     Route::resource('/users', UserController::class)->except('show');
     Route::resource('/courses', CourseController::class)->except('show');
     Route::resource('/cheatsheets', CheatsheetController::class)->except('show');
+    Route::resource('/information', InformationController::class)->except('show');
 });
 
 require __DIR__.'/auth.php';
