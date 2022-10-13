@@ -507,6 +507,10 @@ section {
     line-height: 16px;
     letter-spacing: 0.2px;
     font-weight: 500;
+
+      strong {
+          white-space: nowrap;
+      }
   }
 
   .courses__lesson:hover {

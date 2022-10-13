@@ -12,7 +12,8 @@ class CourseResource extends JsonResource
             'id' => $this->id,
             'name' => $this->name,
             'parts' => $this->parts,
-            'description' => $this->description
+            'description' => $this->description,
+            'modules' => ModuleResource::collection($this->modules)
         ];
     }
 }

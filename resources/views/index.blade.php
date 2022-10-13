@@ -172,10 +172,9 @@
         <p class="heading cta__heading">Готовы начать учиться? Тогда за дело!</p>
         <a class="button" href="#courses">Посмотреть курсы</a>
     </section>
+
     <section class="courses" id="courses"></section>
-
     <section class="news" id="news"></section>
-
     <section class="cheats" id="cheats"></section>
 
     @include('includes.subscribe')
