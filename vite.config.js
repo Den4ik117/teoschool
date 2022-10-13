@@ -9,6 +9,7 @@ export default defineConfig({
                 'resources/css/app.css',
                 'resources/scss/index.scss',
                 'resources/js/index.js',
+                'resources/js/dashboard/modules/index.js',
             ],
             refresh: true,
         }),

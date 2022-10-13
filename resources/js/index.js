@@ -1,4 +1,3 @@
-import axios from "axios";
 import {createApp} from "vue/dist/vue.esm-bundler";
 import Courses from "./components/Courses.vue";
 import News from "./components/News.vue";
@@ -101,15 +100,12 @@ document.addEventListener('scroll', function () {
 
 init();
 
-
-setInterval(() => {
-    let iframe = document.querySelector('#iframe');
+// setInterval(() => {
+//     let iframe = document.querySelector('#iframe');
     // console.log(iframe);
-    iframe.style.height = iframe.contentWindow.document.body.scrollHeight + 'px';
-}, 1000);
+    // iframe.style.height = iframe.contentWindow.document.body.scrollHeight + 'px';
+// }, 1000);
 
 createApp(Courses).mount('#courses');
-
 createApp(News).mount('#news');
-
 createApp(Cheatsheets).mount('#cheats');

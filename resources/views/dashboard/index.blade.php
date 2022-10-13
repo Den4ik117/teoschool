@@ -41,6 +41,12 @@
                             </a>
                         @endcan
 
+                        @can('viewAny', \App\Models\Module::class)
+                            <a class="block bg-gray-400 text-white font-semibold py-1 px-2 hover:bg-gray-500 rounded text-sm" href="{{ route('dashboard.modules.index') }}">
+                                {{ __('messages.dashboard.modules.title') }}
+                            </a>
+                        @endcan
+
                     </div>
                 </div>
             </div>

@@ -42,8 +42,8 @@
                                 <div class="col-span-6 space-y-2">
                                     @foreach($parts as $part)
                                         <div class="flex items-center">
-                                            <input id="part-{{ $part }}" name="parts" type="radio" class="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300" value="{{ $part }}" @checked(old('parts', $course->parts->value) == $part->value)>
-                                            <label for="part-{{ $part }}" class="ml-2 block text-sm font-medium text-gray-700">{{ $part->value }}</label>
+                                            <input id="part-{{ $part->value }}" name="parts" type="radio" class="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300" value="{{ $part->value }}" @checked(old('parts', $course->parts->value) == $part->value)>
+                                            <label for="part-{{ $part->value }}" class="ml-2 block text-sm font-medium text-gray-700">{{ $part->description() }}</label>
                                         </div>
                                     @endforeach
                                 </div>
