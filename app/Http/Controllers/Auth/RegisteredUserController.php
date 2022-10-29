@@ -41,11 +41,19 @@ class RegisteredUserController extends Controller
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
         ]);
 
+        do {
+            $slug = 'id' . rand(1000000, 9999999);
+            $user = User::where('slug', $slug)->first();
+        } while ($user);
+
         $user = User::create([
             'first_name' => $request->first_name,
             'last_name' => $request->last_name,
             'email' => $request->email,
             'role' => Role::Student,
+            'wallet' => 2000,
+            'scores' => 0,
+            'slug' => $slug,
             'password' => Hash::make($request->password),
         ]);
 

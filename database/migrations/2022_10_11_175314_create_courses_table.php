@@ -19,6 +19,7 @@ return new class extends Migration
             $table->string('name');
             $table->enum('parts', Part::values());
             $table->text('description');
+            $table->bigInteger('fee');
             $table->timestamps();
         });
     }

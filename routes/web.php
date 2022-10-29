@@ -8,6 +8,7 @@ use App\Http\Controllers\Dashboard\ModuleController;
 use App\Http\Controllers\Dashboard\PartController;
 use App\Http\Controllers\Dashboard\UserController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -27,6 +28,8 @@ Route::get('contacts', function() {})->name('contacts');
 Route::get('/', HomeController::class);
 
 Route::get('/dashboard', DashboardController::class)->middleware(['auth', 'verified'])->name('dashboard');
+
+Route::get('/profile/{slug}', ProfileController::class)->middleware(['auth', 'verified'])->name('profile');
 
 Route::middleware(['auth', 'verified'])->prefix('dashboard')->name('dashboard.')->group(function () {
     Route::resource('/users', UserController::class)->except('show');

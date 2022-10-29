@@ -13,7 +13,8 @@ class Course extends Model
     protected $fillable = [
         'name',
         'parts',
-        'description'
+        'description',
+        'fee'
     ];
 
     protected $casts = [

@@ -36,7 +36,10 @@
             <nav class="menu py-2">
                 <ul class="flex flex-col gap-1">
                     @auth
-                        <li><a @class(['block px-3 py-2 rounded-md font-medium hover:bg-gray-100', 'underline' => Route::is('dashboard')]) href="{{ route('dashboard') }}">Приборная панель</a></li>
+                        <li><a @class(['block px-3 py-2 rounded-md font-medium hover:bg-gray-100', 'underline' => Route::is('profile')]) href="{{ route('profile', auth()->user()->slug) }}">Профиль</a></li>
+                        @if (auth()->user()->role !== \App\Enums\Role::Student)
+                            <li><a @class(['block px-3 py-2 rounded-md font-medium hover:bg-gray-100', 'underline' => Route::is('dashboard')]) href="{{ route('dashboard') }}">Приборная панель</a></li>
+                        @endif
                         <li><a class="block px-3 py-2 rounded-md font-medium hover:bg-gray-100" href="{{ route('logout') }}">Выйти</a></li>
                     @endauth
 

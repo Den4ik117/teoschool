@@ -22,6 +22,9 @@ class UserSeeder extends Seeder
             'email' => 'admin@mail.ru',
             'email_verified_at' => now(),
             'role' => Role::Developer,
+            'wallet' => 9999999,
+            'scores' => 9999999,
+            'slug' => 'ivanovivan',
             'password' => Hash::make('password')
         ]);
 

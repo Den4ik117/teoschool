@@ -21,6 +21,9 @@ return new class extends Migration
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->enum('role', Role::values());
+            $table->bigInteger('wallet');
+            $table->integer('scores');
+            $table->string('slug')->unique();
             $table->string('password');
             $table->rememberToken();
             $table->timestamps();
