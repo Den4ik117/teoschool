@@ -35,7 +35,9 @@ class ModuleController extends Controller
 
     public function edit(Module $module)
     {
-        return view('dashboard.modules.edit', compact('module'));
+        $parts = $module->parts;
+
+        return view('dashboard.modules.edit', compact(['module', 'parts']));
     }
 
     public function update(ModuleRequest $request, Module $module)

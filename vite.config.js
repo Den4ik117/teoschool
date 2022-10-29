@@ -10,6 +10,7 @@ export default defineConfig({
                 'resources/scss/index.scss',
                 'resources/js/index.js',
                 'resources/js/dashboard/modules/index.js',
+                'resources/js/dashboard/parts/index.js',
             ],
             refresh: true,
         }),

@@ -23,6 +23,24 @@
 
 @section('content')
     <div class="mt-6">
+        <div class="shadow overflow-hidden sm:rounded-md">
+            <div class="px-4 py-5 bg-white sm:p-6">
+                <div class="grid sm:grid-cols-2 gap-4 text-center">
+                    <a class="block bg-teal-500 text-white font-semibold py-1 px-2 hover:bg-teal-600 rounded text-sm col-span-2" href="{{ route('dashboard.modules.parts.index', $module->id) }}">
+                        {{ __('messages.dashboard.modules.parts.title') }}
+                    </a>
+
+                    @foreach($parts as $part)
+                        <a class="block bg-gray-400 text-white font-semibold py-1 px-2 hover:bg-gray-500 rounded text-sm" href="{{ route('dashboard.parts.edit', $part->id) }}">
+                            {{ $part->name }}
+                        </a>
+                    @endforeach
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="mt-6">
         <div class="md:grid md:grid-cols-3 md:gap-6">
             <div class="md:col-span-1">
                 <div class="px-4 sm:px-0">

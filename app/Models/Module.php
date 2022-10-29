@@ -32,4 +32,9 @@ class Module extends Model
     {
         return $this->belongsTo(Course::class);
     }
+
+    public function parts()
+    {
+        return $this->hasMany(Part::class);
+    }
 }
