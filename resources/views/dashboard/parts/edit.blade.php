@@ -23,7 +23,7 @@
     <script>
         const froala = new FroalaEditor('#content');
     </script>
-    @vite('resources/js/dashboard/parts/index.js')
+    @vite('resources/js/dashboard/parts/index.ts')
 @endsection
 
 @section('content')
@@ -53,7 +53,7 @@
                                     <textarea id="content" name="content">{{ old('content', $part->content) }}</textarea>
                                 </div>
 
-                                <div class="col-span-6" id="insert"></div>
+                                <div class="col-span-6" id="insert" data-part-id="{{ $part->id }}" data-tasks="{{ old('tasks', $part->tasks) }}"></div>
 
                             </div>
                         </div>

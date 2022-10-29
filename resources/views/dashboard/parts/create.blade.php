@@ -15,7 +15,7 @@
     <script>
         const froala = new FroalaEditor('#content');
     </script>
-    @vite('resources/js/dashboard/parts/index.js')
+{{--    @vite('resources/js/dashboard/parts/index.ts')--}}
 @endsection
 
 @section('content')
@@ -41,10 +41,12 @@
 
                                 <div class="col-span-6">
                                     <label class="block mb-1 text-sm font-medium text-gray-700" for="name">Содержание части:</label>
-                                    <textarea id="content" name="content">{{ old('content', 'for_test') }}</textarea>
+                                    <textarea id="content" name="content">{{ old('content', '') }}</textarea>
                                 </div>
 
-                                <div class="col-span-6" id="insert"></div>
+                                <input type="hidden" name="tasks" value="[]">
+
+{{--                                <div class="col-span-6" id="insert" data-part-id="{{ $part->id }}" data-tasks="{{ old('tasks', $part->tasks) }}"></div>--}}
 
                             </div>
                         </div>
