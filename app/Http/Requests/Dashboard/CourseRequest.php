@@ -4,6 +4,7 @@ namespace App\Http\Requests\Dashboard;
 
 use App\Enums\Part;
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Support\Str;
 
 class CourseRequest extends FormRequest
 {

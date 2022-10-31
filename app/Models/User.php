@@ -72,4 +72,9 @@ class User extends Authenticatable implements MustVerifyEmail
             get: fn () => mb_str_split($this->first_name)[0] . mb_str_split($this->last_name)[0]
         );
     }
+
+    public function courses()
+    {
+        return $this->belongsToMany(Course::class, 'course_user');
+    }
 }
