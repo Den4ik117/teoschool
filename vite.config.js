@@ -11,6 +11,7 @@ export default defineConfig({
                 'resources/js/index.js',
                 'resources/js/dashboard/modules/index.js',
                 'resources/js/dashboard/parts/index.ts',
+                'resources/js/profile/parts/index.ts',
             ],
             refresh: true,
         }),

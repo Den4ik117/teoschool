@@ -92,7 +92,7 @@
                                     <div class="grid grid-cols-3 gap-4 mt-2">
                                         @foreach ($course->modules as $module)
                                             @if ($module->part === $i + 1)
-                                                <a class="block p-2 border border-indigo-200 border-2 rounded bg-indigo-50 hover:bg-indigo-100 text-xs" href="{{ route('profile.courses.modules.show', [$course->slug, $module->id]) }}" title="Перейти к материалам модуля">{!! $module->title !!}</a>
+                                                <a class="block p-2 border border-indigo-200 border-2 rounded bg-indigo-50 hover:bg-indigo-100 text-xs" href="{{ route('profile.modules.show', [$course->slug, $module->id]) }}" title="Перейти к материалам модуля">{!! $module->title !!}</a>
                                             @endif
                                         @endforeach
                                     </div>

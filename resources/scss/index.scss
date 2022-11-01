@@ -430,6 +430,7 @@ section {
     letter-spacing: 0.2px;
     line-height: 24px;
     font-weight: 500;
+      white-space: nowrap;
   }
 
   .courses__list li:not(.courses__subject-active) span {

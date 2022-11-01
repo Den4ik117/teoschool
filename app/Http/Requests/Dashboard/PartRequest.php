@@ -26,7 +26,7 @@ class PartRequest extends FormRequest
         return [
             'name' => 'required|string|max:255',
             'content' => 'required|string',
-            'tasks' => 'required|string',
+            'tasks' => 'required|json',
         ];
     }
 }
