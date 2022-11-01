@@ -1,10 +1,9 @@
 <?php
 
 use App\Http\Controllers\CheatsheetController;
+use App\Http\Controllers\CheckController;
 use App\Http\Controllers\CourseController;
-use App\Http\Controllers\HomeController;
 use App\Http\Controllers\InformationController;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -25,3 +24,4 @@ use Illuminate\Support\Facades\Route;
 Route::get('/courses', CourseController::class);
 Route::get('/information', InformationController::class);
 Route::get('/cheatsheets', CheatsheetController::class);
+Route::post('/check', [CheckController::class, 'index']);

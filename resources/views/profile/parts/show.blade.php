@@ -40,7 +40,7 @@
                 <p class="text-center text-2xl font-medium mb-2">Содержание</p>
                 {!! $part->content !!}
                 <p class="text-center text-2xl font-medium my-2">Тесты</p>
-                <div id="insert" data-tasks="{{ $part->tasks }}"></div>
+                <div id="insert" data-tasks="{{ $tasks }}"></div>
             </div>
         </div>
     </div>

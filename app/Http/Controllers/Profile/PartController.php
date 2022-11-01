@@ -12,6 +12,17 @@ class PartController extends Controller
 {
     public function show(Request $request, Course $course, Module $module, Part $part)
     {
-        return view('profile.parts.show', compact(['course', 'module', 'part']));
+        $tasks = [];
+        foreach ($part->tasks()->get() as $task) {
+            $tasks[] = [
+                'id' => $task->id,
+                'type' => $task->type,
+                'name' => $task->name,
+                'options' => json_decode($task->options),
+            ];
+        }
+        $tasks = json_encode($tasks);
+
+        return view('profile.parts.show', compact(['course', 'module', 'part', 'tasks']));
     }
 }
