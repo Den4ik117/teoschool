@@ -42,7 +42,7 @@
                             <p class="text-2xl font-semibold mt-1">{{ $course->name }}</p>
                             <p class="text-sm text-gray-700 mt-2">{{ $course->description }}</p>
                             @if ($course->users->contains(auth()->user()->id))
-                                <p class="text-sm text-gray-700 mt-2 text-red-600">Вы уже записаны на этот курс!</p>
+                                <p class="text-sm text-gray-700 mt-2 text-red-600">Вы уже записаны на этот курс! <a href="{{ route('profile.courses.show', $course->slug) }}" class="underline">Перейти к изучению материала</a>.</p>
                             @endif
                         </div>
                     </div>

@@ -13,11 +13,13 @@ return new class extends Migration
      */
     public function up()
     {
+        Schema::dropIfExists('task_user');
+
         Schema::create('task_user', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id');
-            $table->foreignId('task_id');
-//            $table->boolean('passed');
+            $table->foreignId('task_id')->nullable()->constrained('tasks');
+            $table->foreignId('user_id')->nullable()->constrained('users');
+            $table->timestamps();
         });
     }
 

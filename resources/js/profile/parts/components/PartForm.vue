@@ -25,7 +25,7 @@
                         </ul>
                     </template>
                     <template v-else-if="task.type === TaskType.Input">
-                        <input class="w-full rounded text-sm mt-1 px-3 py-2" type="text" :name="task.id">
+                        <input class="w-full block mt-4 rounded text-sm mt-1 px-3 py-2" type="text" :name="task.id">
                     </template>
                     <button
                         class="mt-2 block bg-indigo-500 hover:bg-indigo-600 focus:ring-2 focus:ring-offset-2 focus:ring-indigo-600 rounded px-3 py-2 uppercase text-xs text-white font-bold"
@@ -67,6 +67,7 @@ export default defineComponent({
     setup() {
         const insert = document.querySelector<HTMLDivElement>('#insert');
         const tasks = ref<Task[]>(JSON.parse(insert?.dataset.tasks || '[]'));
+        const user = ref<string[]>(JSON.parse(insert?.dataset.user || '0'));
         const taskTypes = {
             [TaskType.One]: 'Выбор одного ответа из нескольких вариантов',
             [TaskType.Many]: 'Выбор нескольких ответов из множества вариантов',
@@ -95,7 +96,8 @@ export default defineComponent({
 
             axios.post('/api/check', {
                     'answer': answer,
-                    'task_id': task
+                    'task_id': task,
+                    'user_id': user.value
                 })
                 // .then(response => {
                 //     console.log(response)})
@@ -159,7 +161,8 @@ export default defineComponent({
             taskTypes,
             // createTask,
             TaskType,
-            check
+            check,
+            user,
             // createTaskOption,
             // toggleTaskOption,
             // deleteTaskOption

@@ -413,7 +413,7 @@ section {
   .courses__row {
     padding-top: 64px;
     display: grid;
-    grid-template-columns: 1fr 2fr;
+    grid-template-columns: min-content 1fr;
     grid-gap: 30px;
   }
 
@@ -423,7 +423,7 @@ section {
   }
 
   .courses__list li {
-    padding: 12px 24px;
+    padding: 12px 48px 12px 24px;
     width: 100%;
     cursor: pointer;
     font-size: 18px;
@@ -461,6 +461,7 @@ section {
   .courses__right {
     border: 1px solid $color-black;
     border-radius: 10px;
+  min-width: 0;
   }
 
   .courses__title {
@@ -494,7 +495,8 @@ section {
 
   .courses__lessons {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    //grid-template-columns: repeat(3, 1fr);
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
     grid-gap: 16px;
     grid-auto-rows: minmax(80px, auto);
   }
@@ -508,8 +510,10 @@ section {
     line-height: 16px;
     letter-spacing: 0.2px;
     font-weight: 500;
+      min-width: 0;
 
       strong {
+          //display: block;
           white-space: nowrap;
       }
   }

@@ -10,10 +10,18 @@
 @endsection
 
 @section('scripts')
-    <link href="https://cdn.jsdelivr.net/npm/froala-editor@latest/css/froala_editor.pkgd.min.css" rel="stylesheet" type="text/css" />
-    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/froala-editor@latest/js/froala_editor.pkgd.min.js"></script>
+{{--    <link href="https://cdn.jsdelivr.net/npm/froala-editor@latest/css/froala_editor.pkgd.min.css" rel="stylesheet" type="text/css" />--}}
+{{--    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/froala-editor@latest/js/froala_editor.pkgd.min.js"></script>--}}
+{{--    <script>--}}
+{{--        const froala = new FroalaEditor('#content');--}}
+{{--    </script>--}}
+    <script src="https://cdn.tiny.cloud/1/l206sngxw5gkmhl99l4chp91tka128wf6a5kvbs1xapnthhr/tinymce/6/tinymce.min.js" referrerpolicy="origin"></script>
     <script>
-        const froala = new FroalaEditor('#content');
+        tinymce.init({
+            selector: '#content',
+            plugins: 'anchor autolink charmap codesample emoticons image link lists media searchreplace table visualblocks wordcount',
+            toolbar: 'undo redo | blocks fontfamily fontsize | bold italic underline strikethrough | link image media table | align lineheight | numlist bullist indent outdent | emoticons charmap | removeformat',
+        });
     </script>
 {{--    @vite('resources/js/dashboard/parts/index.ts')--}}
 @endsection

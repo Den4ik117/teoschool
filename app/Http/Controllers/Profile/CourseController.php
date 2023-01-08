@@ -43,4 +43,9 @@ class CourseController extends Controller
     {
         return view('profile.courses.show', compact('course'));
     }
+
+    public function awards()
+    {
+        return view('profile.awards');
+    }
 }
