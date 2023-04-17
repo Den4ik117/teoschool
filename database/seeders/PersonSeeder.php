@@ -27,7 +27,7 @@ class PersonSeeder extends Seeder
      */
     public function run(): void
     {
-        User::query()->whereNotIn('id', [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11])->get()->toQuery()->delete();
+//        User::query()->whereNotIn('id', [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11])->get()->toQuery()->delete();
 
         $personDirector = User::query()->firstWhere('email', 'admin@mail.ru')->person()->create([
             'grade' => PersonGrade::Director,
