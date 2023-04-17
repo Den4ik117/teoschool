@@ -8,12 +8,14 @@ use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
 {
-    public function run()
+    public function run(): void
     {
         $this->call([
             UserSeeder::class,
             CourseSeeder::class,
             ModuleSeeder::class,
+            WorkingClassSeeder::class,
+            PersonSeeder::class,
         ]);
 
         Cheatsheet::factory(10)->create();

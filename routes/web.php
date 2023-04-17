@@ -1,5 +1,8 @@
 <?php
 
+use App\Http\Controllers\Class\ExerciseController as ClassExerciseController;
+use App\Http\Controllers\Class\IndexController as ClassIndexController;
+use App\Http\Controllers\Class\WorkingClassController as ClassWorkingClassController;
 use App\Http\Controllers\Dashboard\CheatsheetController;
 use App\Http\Controllers\Dashboard\CourseController;
 use App\Http\Controllers\Dashboard\DashboardController;
@@ -47,6 +50,12 @@ Route::middleware(['auth', 'verified'])->prefix('dashboard')->name('dashboard.')
     Route::resource('/information', InformationController::class)->except('show');
     Route::resource('/modules', ModuleController::class)->except('show');
     Route::resource('/modules.parts', PartController::class)->shallow()->except('show');
+});
+
+Route::middleware(['auth', 'verified'])->prefix('class')->name('class.')->group(function () {
+    Route::get('/', [ClassIndexController::class, 'index'])->name('index');
+    Route::get('/{uuid}', [ClassWorkingClassController::class, 'show'])->name('classes.show');
+    Route::get('/exercises/{uuid}', [ClassExerciseController::class, 'show'])->name('exercises.show');
 });
 
 require __DIR__.'/auth.php';
