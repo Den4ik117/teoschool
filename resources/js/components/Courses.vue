@@ -7,7 +7,7 @@
             <div>
                 <div class="courses__left">
                     <ul class="courses__list">
-                        <li v-for="(course, index) in courses" :key="course.id" @click="activeCourseIndex = index" :class="{ 'courses__subject-active': course.name === courses[activeCourseIndex].name }"><span>»</span>{{ course.name }}</li>
+                        <li v-for="(course, index) in courses" :key="course.id" @click="activeCourseIndex = index" :class="{ 'courses__subject-active': course.name === courses[activeCourseIndex].name }">{{ course.name }}</li>
                     </ul>
                 </div>
             </div>
@@ -23,7 +23,7 @@
                                 <a
                                     v-if="part === module.part"
                                     class="courses__lesson"
-                                    :href="'/dashboard/modules/' + module.id"
+                                    :href="'/courses/' + courses[activeCourseIndex].slug + '/modules/' + module.id"
                                     v-html="module.title"
                                 ></a>
                             </template>

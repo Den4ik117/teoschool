@@ -17,4 +17,10 @@ class Task extends Model
         'options',
         'correct',
     ];
+
+    public function users()
+    {
+        return $this->belongsToMany(User::class)->using(TaskUser::class);
+//        return $this->belongsToMany(User::class, 'task_user', 'task_id', 'user_id')->using(TaskUser::class);
+    }
 }

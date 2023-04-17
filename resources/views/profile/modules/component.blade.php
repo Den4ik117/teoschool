@@ -16,14 +16,14 @@
             <div class="flex justify-between items-center">
                 <div class="flex flex-col">
                     <span class="text-blue-600 font-semibold text-sm">{{ $part->name }}</span>
-                    <span class="text-gray-600 text-xs">Количество заданий: 0</span>
+{{--                    <span class="text-gray-600 text-xs">Количество заданий: 0</span>--}}
                 </div>
                 <div>
-                    @if (rand(1, 2) === 2)
-                        <span class="py-1 px-2 rounded text-xs bg-red-100 text-red-800">Не пройдено</span>
-                    @else
-                        <span class="py-1 px-2 rounded text-xs bg-green-100 text-green-800">Пройдено</span>
-                    @endif
+{{--                    @if (rand(1, 2) === 2)--}}
+{{--                        <span class="py-1 px-2 rounded text-xs bg-red-100 text-red-800">Не пройдено</span>--}}
+{{--                    @else--}}
+{{--                        <span class="py-1 px-2 rounded text-xs bg-green-100 text-green-800">Пройдено</span>--}}
+{{--                    @endif--}}
                 </div>
             </div>
         </a>

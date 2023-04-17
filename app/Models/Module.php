@@ -24,7 +24,7 @@ class Module extends Model
     protected function title(): Attribute
     {
         return Attribute::make(
-            get: fn() => "<strong>{$this->task}:</strong>&nbsp;{$this->description}"
+            get: fn() => "<strong>{$this->task}:</strong> {$this->description}"
         );
     }
 

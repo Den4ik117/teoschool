@@ -33,6 +33,7 @@ Route::get('/', HomeController::class);
 Route::get('/dashboard', DashboardController::class)->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::get('/profile/courses', [ProfileCourseController::class, 'index'])->middleware(['auth', 'verified'])->name('profile.courses.index');
+Route::get('/profile/awards', [ProfileCourseController::class, 'awards'])->middleware(['auth', 'verified'])->name('profile.awards.index');
 Route::post('/profile/courses/{course}', [ProfileCourseController::class, 'store'])->middleware(['auth', 'verified'])->name('profile.courses.store');
 Route::get('/profile/{slug}', ProfileController::class)->middleware(['auth', 'verified'])->name('profile');
 Route::get('/courses/{course:slug}', [ProfileCourseController::class, 'show'])->middleware(['auth', 'verified'])->name('profile.courses.show');

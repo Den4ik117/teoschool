@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Task;
+use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class CheckController extends Controller
 {
@@ -44,6 +46,11 @@ class CheckController extends Controller
 
         if ($task->type === '3') {
             $result = $answers[0] === $aws[0];
+        }
+
+        if ($result && !$task->users()->find($request->user_id)) {
+            $task->users()->attach($request->user_id);
+            User::find($request->user_id)->increment('scores', $task->scores);
         }
 
         return response()->json([

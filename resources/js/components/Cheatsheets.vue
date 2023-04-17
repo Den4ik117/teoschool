@@ -22,7 +22,7 @@
                         <tr v-for="cheat in cheats" :key="cheat.id">
                             <td class="align-left">{{ cheat.name }}</td>
                             <td>{{ cheat.course }}</td>
-                            <td><a :href="cheat.url">Открыть</a></td>
+                            <td><a :href="cheat.url" target="_blank">Открыть</a></td>
                         </tr>
                     </tbody>
                 </table>

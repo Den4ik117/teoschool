@@ -84,7 +84,7 @@
         <div class="cover__wrapper">
             <h1>Интенсивные курсы для подготовки к ЕГЭ за 3 месяца!</h1>
             <h2 class="description cover__description">На этом сайте вы можете найти несколько
-                <strong>бесплатных</strong> курсов для подготовки к экзаменам, которые включают в себя теоретические
+                курсов для подготовки к экзаменам, которые включают в себя теоретические
                 материалы, практические задания и шпаргалки.</h2>
             <div class="cover__cta">
                 <a class="button" href="#courses">Посмотреть курсы</a>
@@ -99,9 +99,8 @@
             <div class="than__row">
                 <div class="than__item">
                     <img class="than__image" src="{{ Vite::asset('resources/images/than-1.svg') }}" alt="Экономия денег">
-                    <p class="than__heading">Экономия денег</p>
-                    <p class="than__description">Курсы, представленные на сайте, абсолютно бесплатны. Вам не придётся
-                        платить.</p>
+                    <p class="than__heading">Экономия времени</p>
+                    <p class="than__description">Курсы, представленные на сайте, просты и легки для понимания. Вам не придётся мучаться.</p>
                 </div>
                 <div class="than__item">
                     <img class="than__image" src="{{ Vite::asset('resources/images/than-2.svg') }}" alt="Устраняем пробелы">
@@ -116,9 +115,8 @@
                 </div>
                 <div class="than__item">
                     <img class="than__image" src="{{ Vite::asset('resources/images/than-4.svg') }}" alt="Не требует регистрации">
-                    <p class="than__heading">Не требует регистрации</p>
-                    <p class="than__description">Чтобы начать проходить курс, Вам не нужно регистрироваться на
-                        сайте.</p>
+                    <p class="than__heading">Быстрота</p>
+                    <p class="than__description">Чтобы начать проходить курсы, Вам всего лишь нужно пройти простую регистрацию</p>
                 </div>
             </div>
         </div>
@@ -136,7 +134,7 @@
             <div class="how__grid">
                 <div class="how__left">
                     <p class="how__step">Первый шаг</p>
-                    <p class="how__description">Найдите и выберите подходящий курс в разделе «Курсы»</p>
+                    <p class="how__description">Найдите и купите подходящий курс в разделе «Курсы»</p>
                 </div>
                 <div class="how__center">
                     <div class="how__circle"></div>
