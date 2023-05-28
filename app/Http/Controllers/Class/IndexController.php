@@ -9,7 +9,7 @@ class IndexController extends Controller
 {
     public function index(Request $request)
     {
-        $user = $request->user()->with(['person', 'person.classes', 'person.exercises'])->first();
+        $user = $request->user()->with(['person', 'person.classes', 'person.exercises' => fn ($query) => $query->latest()])->first();
 
         return view('class.index', compact(['user']));
     }

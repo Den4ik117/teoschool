@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Class\ExerciseController as ClassExerciseController;
 use App\Http\Controllers\Class\IndexController as ClassIndexController;
+use App\Http\Controllers\Class\PersonController as ClassPersonController;
 use App\Http\Controllers\Class\WorkingClassController as ClassWorkingClassController;
 use App\Http\Controllers\Dashboard\CheatsheetController;
 use App\Http\Controllers\Dashboard\CourseController;
@@ -15,6 +16,7 @@ use App\Http\Controllers\Profile\ProfileController;
 use App\Http\Controllers\Profile\CourseController as ProfileCourseController;
 use App\Http\Controllers\Profile\ModuleController as ProfileModuleController;
 use App\Http\Controllers\Profile\PartController as ProfilePartController;
+use App\Http\Controllers\WebinarController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -42,6 +44,7 @@ Route::get('/profile/{slug}', ProfileController::class)->middleware(['auth', 've
 Route::get('/courses/{course:slug}', [ProfileCourseController::class, 'show'])->middleware(['auth', 'verified'])->name('profile.courses.show');
 Route::get('/courses/{course:slug}/modules/{module}', [ProfileModuleController::class, 'show'])->middleware(['auth', 'verified'])->name('profile.modules.show');
 Route::get('/courses/{course:slug}/modules/{module}/parts/{part}', [ProfilePartController::class, 'show'])->middleware(['auth', 'verified'])->name('profile.parts.show');
+Route::get('/webinars', [WebinarController::class, 'index'])->name('webinars.index');
 
 Route::middleware(['auth', 'verified'])->prefix('dashboard')->name('dashboard.')->group(function () {
     Route::resource('/users', UserController::class)->except('show');
@@ -55,7 +58,13 @@ Route::middleware(['auth', 'verified'])->prefix('dashboard')->name('dashboard.')
 Route::middleware(['auth', 'verified'])->prefix('class')->name('class.')->group(function () {
     Route::get('/', [ClassIndexController::class, 'index'])->name('index');
     Route::get('/{uuid}', [ClassWorkingClassController::class, 'show'])->name('classes.show');
+    Route::get('/{uuid}/exercises/create', [ClassWorkingClassController::class, 'exerciseCreate'])->name('classes.exercises.create');
+    Route::post('/{uuid}/exercises', [ClassWorkingClassController::class, 'exerciseStore'])->name('classes.exercises.store');
     Route::get('/exercises/{uuid}', [ClassExerciseController::class, 'show'])->name('exercises.show');
+    Route::post('/exercises/{exercise:uuid}/completed', [ClassExerciseController::class, 'complete'])->name('exercises.complete');
+    Route::get('/persons/{user:slug}', [ClassPersonController::class, 'show'])->name('persons.show');
+    Route::get('/persons/{user:slug}/exercises/create', [ClassPersonController::class, 'exerciseCreate'])->name('persons.exercises.create');
+    Route::post('/persons/{user:slug}/exercises', [ClassPersonController::class, 'exerciseStore'])->name('persons.exercises.store');
 });
 
 require __DIR__.'/auth.php';

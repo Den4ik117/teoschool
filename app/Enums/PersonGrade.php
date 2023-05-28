@@ -20,4 +20,15 @@ enum PersonGrade: string
             self::Parent => 'Родитель'
         };
     }
+
+    public function who(): string
+    {
+        return match ($this) {
+            self::Director => 'директора школы',
+            self::HeadTeacher => 'завуча',
+            self::Teacher => 'учителя',
+            self::Student => 'ученика',
+            self::Parent => 'родителя'
+        };
+    }
 }

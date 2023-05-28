@@ -38,6 +38,7 @@
                     @auth
                         <li><a @class(['block px-3 py-2 rounded-md font-medium hover:bg-gray-100', 'underline' => Route::is('profile')]) href="{{ route('profile', auth()->user()->slug) }}">Профиль</a></li>
                         <li><a @class(['block px-3 py-2 rounded-md font-medium hover:bg-gray-100', 'underline' => Route::is('class.index')]) href="{{ route('class.index') }}">Учебный класс</a></li>
+                        <li><a @class(['block px-3 py-2 rounded-md font-medium hover:bg-gray-100', 'underline' => Route::is('webinars.index')]) href="{{ route('webinars.index') }}">Вебинары</a></li>
                         <li><a @class(['block px-3 py-2 rounded-md font-medium hover:bg-gray-100', 'underline' => Route::is('profile.awards.index')]) href="{{ route('profile.awards.index') }}">Награды</a></li>
                         @if (auth()->user()->role !== \App\Enums\Role::Student)
                             <li><a @class(['block px-3 py-2 rounded-md font-medium hover:bg-gray-100', 'underline' => Route::is('dashboard')]) href="{{ route('dashboard') }}">Приборная панель</a></li>
